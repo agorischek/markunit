@@ -1,7 +1,7 @@
 <img width="180" src="img/icon.png" alt="Markunit icon" />
 
 # Markunit
-A simple assert library for unit testing Markdown.
+A simple assertion library for unit testing Markdown.
 
 [![Build Status](https://img.shields.io/travis/agorischek/markunit.svg)](https://travis-ci.org/agorischek/markunit)
 [![Version](https://img.shields.io/npm/v/markunit.svg)](https://www.npmjs.com/package/markunit)
