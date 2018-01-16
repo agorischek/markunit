@@ -20,8 +20,11 @@ describe("Rendered", function(){
 })
 
 describe("Copy", function(){
-    it("should contain the string \"testing purposes only\"", function(){
-        doc.copy.has("testing purposes only")
+    it("should contain the string \"testing purposes\"", function(){
+        doc.copy.has("testing purposes")
+    })
+    it("should contain the string \"testing purposes of only\"", function(){
+        doc.copy.has("testing purposes of only")
     })
     it("should not contain the string \"Not part of the copy\"", function(){
         doc.copy.no("markunit.js")
