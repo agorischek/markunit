@@ -3,6 +3,10 @@
 # Markunit
 A simple assert library for unit testing Markdown.
 
+[![Build Status](https://img.shields.io/travis/agorischek/markunit.svg)](https://travis-ci.org/agorischek/markunit)
+[![Version](https://img.shields.io/npm/v/markunit.svg)](https://www.npmjs.com/package/markunit)
+[![License](https://img.shields.io/github/license/agorischek/markunit.svg)](https://github.com/agorischek/markunit/blob/master/LICENSE)
+
 ## Wait a second...
 Unit testing ***Markdown***? Yeah, it might sound odd. But Markdown is code, and it can have bugs just like anything else. Maybe there are lingering references to an API call you’ve removed. Or you want to avoid double-level lists for stylistic reasons. Or perhaps contributors keep misspelling your library's name. Wouldn’t it be nice to catch those things automatically? Exactly. Markunit provides assert methods for analyzing your Markdown content and the HTML it creates, which can be run inside your favorite test runner and continuous integration system.
 
