@@ -25,5 +25,8 @@
     "cheerio": "^1.0.0-rc.2",
     "html2plaintext": "^2.0.1",
     "showdown": "^1.8.6"
+  },
+  "devDependencies": {
+    "mocha": "^4.1.0"
   }
 }
