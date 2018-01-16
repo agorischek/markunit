@@ -1,58 +1,60 @@
-# Markunit
-Assert library for unit testing Markdown
+<img width="180" src="img/icon.png" alt="Markunit icon" />
 
-## Useful for
-* Ensuring your library's or company's name is spelled and capitalized correctly
-* Reviewing for undesired structures, such as multi-level lists
-* Checking for profanity
+# Markunit
+A simple assert library for unit testing Markdown.
+
+## Wait a second...
+Unit testing ***Markdown***? Yeah, it might sound odd. But Markdown is code, and it can have bugs just like anything else. Maybe there are lingering references to an API call you’ve removed. Or you want to avoid double-level lists for stylistic reasons. Or perhaps contributors keep misspelling your library's name. Wouldn’t it be nice to catch those things automatically? Exactly. Markunit provides assert methods for analyzing your Markdown content and the HTML it creates, which can be run inside your favorite test runner and continuous integration system.
 
 ## Installation
 
 Get the package from npm:
-```
-$ npm install -save markunit
+```bash
+$ npm install markunit
 ```
 
 Then require the package and load your Markdown document:
-```
-var markunit = require("../lib/markunit.js")
-var doc = markunit("# Test document\nThis document is used for testing purposes of `markunit.js` _only_.\n\nThanks!")
+```js
+var markunit = require("markunit")
+var markdown = "# Test document\nThis is _example_ Markdown content for `markunit.js` documentation."
+var doc = markunit(markdown)
 ```
 
-## Methods
+## Renditions
+There are five different renditions of the original Markdown content that can be analyzed: `source`, `rendered`, `copy`, `code`, and `markup`. Each of them possesses a `.has()` and a `.no()` method.
 
 ### Source
 Check for the presence or absence of strings in the source Markdown:
 
-```
-doc.source.has("# Test document") // true
-doc.source.no("Doesn't exist") // true
+```js
+doc.source.has("# Test document") // pass
+doc.source.no("Doesn't exist") // pass
 ```
 
 ### Rendered
-Check for the presence or absense of strings in the rendered HTML:
-```
-doc.rendered.has("<h1>Test document</h1>") // true
-doc.rendered.no("<h1>Not the title</h1>") // true
+Check for the presence or absence of strings in the rendered HTML:
+```js
+doc.rendered.has("<h1>Test document</h1>") // pass
+doc.rendered.no("<h1>Not the title</h1>") // pass
 ```
 
 ### Copy
-Check for the presence or absense of strings in contents of the doc, excluding `code` elements:
-```
-doc.copy.has("testing purposes of only") // true
-doc.copy.no("markunit.js") // true
+Check for the presence or absence of strings in contents of the doc, excluding `code` elements:
+```js
+doc.copy.has("This is example Markdown") // pass
+doc.copy.no("markunit.js") // pass
 ```
 
 ### Code
-Check for the presence or absense of strings in contents of only the `code` elements:
-```
-doc.code.has("markunit.js") // true
-doc.code.no("$ npm install") // true
+Check for the presence or absence of strings in contents of only the `code` elements:
+```js
+doc.code.has("markunit.js") // pass
+doc.code.no("mark-unit.js") // pass
 ```
 
 ### Markup
-Check for the presence or absense of `jquery`-style selectors:
-```
-doc.markup.has("p") // true
-doc.markup.no("li li") // true
+Check for the presence or absence of `jquery`-style [selectors](https://cheerio.js.org):
+```js
+doc.markup.has("p") // pass
+doc.markup.no("li li") // pass
 ```
