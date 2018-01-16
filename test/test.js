@@ -1,5 +1,7 @@
 var markunit = require("../lib/markunit.js")
-var doc = markunit("# Test document\nThis document is used for testing purposes of `markunit.js` _only_.\n\nThanks!")
+var fs = require('fs');
+
+var doc = markunit(fs.readFileSync("test/test.md", "utf8"))
 
 describe("Source", function(){
     it("should contain the string \"# Test document\"", function(){
