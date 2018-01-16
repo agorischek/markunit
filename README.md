@@ -1,4 +1,4 @@
-<img width="200" src="img/icon.png" alt="Markunit icon" />
+<img width="180" src="img/icon.png" alt="Markunit icon" />
 
 # Markunit
 A simple assert library for unit testing Markdown.
@@ -9,12 +9,12 @@ Unit testing ***Markdown***? Yeah, it might sound odd. But Markdown is code, and
 ## Installation
 
 Get the package from npm:
-```
+```bash
 $ npm install markunit
 ```
 
 Then require the package and load your Markdown document:
-```
+```js
 var markunit = require("markunit")
 var markdown = "# Test document\nThis is _example_ Markdown content for `markunit.js` documentation."
 var doc = markunit(markdown)
@@ -26,36 +26,35 @@ There are five different renditions of the original Markdown content that can be
 ### Source
 Check for the presence or absence of strings in the source Markdown:
 
-```
+```js
 doc.source.has("# Test document") // pass
 doc.source.no("Doesn't exist") // pass
-
 ```
 
 ### Rendered
 Check for the presence or absence of strings in the rendered HTML:
-```
+```js
 doc.rendered.has("<h1>Test document</h1>") // pass
 doc.rendered.no("<h1>Not the title</h1>") // pass
 ```
 
 ### Copy
 Check for the presence or absence of strings in contents of the doc, excluding `code` elements:
-```
+```js
 doc.copy.has("This is example Markdown") // pass
 doc.copy.no("markunit.js") // pass
 ```
 
 ### Code
 Check for the presence or absence of strings in contents of only the `code` elements:
-```
+```js
 doc.code.has("markunit.js") // pass
 doc.code.no("mark-unit.js") // pass
 ```
 
 ### Markup
 Check for the presence or absence of `jquery`-style [selectors](https://cheerio.js.org):
-```
+```js
 doc.markup.has("p") // pass
 doc.markup.no("li li") // pass
 ```
