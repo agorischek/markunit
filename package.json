@@ -1,7 +1,7 @@
 {
   "name": "markunit",
   "version": "0.1.0",
-  "description": "Assert library for unit testing Markdown",
+  "description": "A simple assert library for unit testing Markdown",
   "main": "lib/markunit.js",
   "scripts": {
     "test": "mocha"
@@ -11,7 +11,9 @@
     "url": "git+https://agorischek@github.com/agorischek/markunit.git"
   },
   "keywords": [
-    "markdown"
+    "markdown",
+    "unit testing",
+    "asserts"
   ],
   "author": "Alex Gorischek",
   "license": "MIT",
