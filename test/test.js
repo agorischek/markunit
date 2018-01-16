@@ -4,49 +4,76 @@ var fs = require('fs');
 var doc = markunit(fs.readFileSync("test/test.md", "utf8"))
 
 describe("Source", function(){
-    it("should contain the string \"# Test document\"", function(){
+    it("should find a string in the source Markdown", function(){
         doc.source.has("# Test document")
     })
-    it("should not contain the string \"Doesn't exist\"", function(){
+    it("should find a \\n newline character", function(){
+        doc.source.has("# Test document")
+    })
+    it("should not find a string with different casing", function(){
+        doc.source.no("# test document")
+    })
+    it("should not find a string that is not in the source Markdown", function(){
         doc.source.no("Doesn't exist")
     })
 })
 
 describe("Rendered", function(){
-    it("should contain the string \"<h1>Test document</h1>\"", function(){
+    it("should find the HTML translation of a source Markdown element", function(){
         doc.rendered.has("<h1>Test document</h1>")
     })
-    it("should not contain the string \"<h1>Not the title</h1>\"", function(){
+    it("should find an HTML element that was present in the source Markdown", function(){
+        doc.rendered.has("<em>testing</em>")
+    })
+    it("should not find an HTML element with incorrect content", function(){
         doc.rendered.no("<h1>Not the title</h1>")
+    })
+    it("should not find an HTML element that doesn't exist at all", function(){
+        doc.rendered.no("<i></i>")
     })
 })
 
 describe("Copy", function(){
-    it("should contain the string \"testing purposes\"", function(){
+    it("should find a string that isn't in a code element", function(){
         doc.copy.has("testing purposes")
     })
-    it("should contain the string \"testing purposes of only\"", function(){
+    it("should find a string whose HTML has nested elements", function(){
         doc.copy.has("testing purposes of only")
     })
-    it("should not contain the string \"Not part of the copy\"", function(){
+    it("should not find a string that only exists in code elements", function(){
         doc.copy.no("markunit.js")
+    })
+    it("should not find a string with casing that's only present in code elements", function(){
+        doc.copy.no("markunit")
     })
 })
 
 describe("Code", function(){
-    it("should contain the string \"markunit.js\"", function(){
+    it("should find a string in an inline code element", function(){
         doc.code.has("markunit.js")
     })
-    it("should not contain the string \"$ npm install\"", function(){
+    it("should find a string in a standalone code block", function(){
+        doc.code.has("testing = true")
+    })
+    it("should not find code that isn't present", function(){
         doc.code.no("$ npm install")
+    })
+    it("should not find the tick marks used to demarcate code blocks in Markdown", function(){
+        doc.code.no("```")
     })
 })
 
 describe("Markup", function(){
-    it("should contain the selector \"p\"", function(){
+    it("should find the HTML translation of a Markdown element", function(){
         doc.markup.has("p")
     })
-    it("should not contain selector \"li li\"", function(){
+    it("should find an HTML element that was present in the source Markdown", function(){
+        doc.markup.has("em")
+    })
+    it("should not find a selector that is not present", function(){
         doc.markup.no("li li")
+    })
+    it("should not find a nested selector when a single level selector is present", function(){
+        doc.markup.no("p p")
     })
 })
