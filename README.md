@@ -25,7 +25,7 @@ var doc = markunit(markdown)
 ```
 
 ## Renditions
-There are five different renditions of the original Markdown content that can be analyzed: `source`, `rendered`, `copy`, `code`, and `markup`. Each of them possesses a `.has()` and a `.no()` method.
+There are five different renditions of the original Markdown content that can be analyzed: `source`, `rendered`, `copy`, `code`, and `markup`. Each of them possesses a `.has()` and a `.no()` method. The `markup` methods accept only strings, while all others accept both strings and regular expressions.
 
 ### Source
 Check for the presence or absence of strings in the source Markdown:
