@@ -38,13 +38,16 @@ describe("Copy", function(){
         doc.copy.has("testing purposes")
     })
     it("should find a string whose HTML has nested elements", function(){
-        doc.copy.has("testing purposes of only")
+        doc.copy.has("for testing purposes")
     })
     it("should not find a string that only exists in code elements", function(){
         doc.copy.no("markunit.js")
     })
     it("should not find a string with casing that's only present in code elements", function(){
         doc.copy.no("markunit")
+    })
+    it("should not find a string that is created by the removal of code elements", function(){
+        doc.copy.no("purposes of only")
     })
 })
 
@@ -60,6 +63,9 @@ describe("Code", function(){
     })
     it("should not find the tick marks used to demarcate code blocks in Markdown", function(){
         doc.code.no("```")
+    })
+    it("should not find a string that is created by the removal of non-code elements", function(){
+        doc.copy.no("true test.js")
     })
 })
 
