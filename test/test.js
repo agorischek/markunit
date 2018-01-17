@@ -10,11 +10,17 @@ describe("Source", function(){
     it("should find a \\n newline character", function(){
         doc.source.has("# Test document")
     })
+    it("should find a pattern with regex", function(){
+        doc.source.has(/fil.+?ed/)
+    })
     it("should not find a string with different casing", function(){
         doc.source.no("# test document")
     })
     it("should not find a string that is not in the source Markdown", function(){
         doc.source.no("Doesn't exist")
+    })
+    it("should not find a pattern that doesn't exist with regex", function(){
+        doc.source.no(/filll.+?ed/)
     })
 })
 
@@ -25,11 +31,17 @@ describe("Rendered", function(){
     it("should find an HTML element that was present in the source Markdown", function(){
         doc.rendered.has("<em>testing</em>")
     })
+    it("should find a pattern with regex", function(){
+        doc.rendered.has(/<em>.*?<\/em>/)
+    })
     it("should not find an HTML element with incorrect content", function(){
         doc.rendered.no("<h1>Not the title</h1>")
     })
     it("should not find an HTML element that doesn't exist at all", function(){
         doc.rendered.no("<i></i>")
+    })
+    it("should not find a pattern that doesn't exist with regex", function(){
+        doc.rendered.no(/^<p>/)
     })
 })
 
@@ -40,6 +52,9 @@ describe("Copy", function(){
     it("should find a string whose HTML has nested elements", function(){
         doc.copy.has("for testing purposes")
     })
+    it("should find a pattern with regex", function(){
+        doc.copy.has(/testing .*? of/)
+    })
     it("should not find a string that only exists in code elements", function(){
         doc.copy.no("markunit.js")
     })
@@ -49,14 +64,20 @@ describe("Copy", function(){
     it("should not find a string that is created by the removal of code elements", function(){
         doc.copy.no("purposes of only")
     })
+    it("should not find a pattern that doesn't exist with regex", function(){
+        doc.copy.no(/of .*? only/)
+    })
 })
-
+//
 describe("Code", function(){
     it("should find a string in an inline code element", function(){
         doc.code.has("markunit.js")
     })
     it("should find a string in a standalone code block", function(){
         doc.code.has("testing = true")
+    })
+    it("should find a pattern with regex", function(){
+        doc.code.has(/var.*?true/)
     })
     it("should not find code that isn't present", function(){
         doc.code.no("$ npm install")
@@ -65,7 +86,10 @@ describe("Code", function(){
         doc.code.no("```")
     })
     it("should not find a string that is created by the removal of non-code elements", function(){
-        doc.copy.no("true test.js")
+        doc.code.no("true test.js")
+    })
+    it("should not find a pattern that doesn't exist with regex", function(){
+        doc.code.no(/testing ==/)
     })
 })
 
