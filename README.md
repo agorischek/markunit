@@ -28,7 +28,7 @@ var doc = markunit(markdown)
 There are five different renditions of the original Markdown content that can be analyzed: `source`, `rendered`, `copy`, `code`, and `markup`. Each of them possesses a `.has()` and a `.no()` method. The `markup` methods accept only strings, while all others accept both strings and regular expressions.
 
 ### Source
-Check for the presence or absence of strings in the source Markdown:
+Check for the presence or absence of strings or patterns in the source Markdown:
 
 ```js
 doc.source.has("# Test document") // pass
@@ -36,21 +36,21 @@ doc.source.no("Doesn't exist") // pass
 ```
 
 ### Rendered
-Check for the presence or absence of strings in the rendered HTML:
+Check for the presence or absence of strings or patterns in the rendered HTML:
 ```js
 doc.rendered.has("<h1>Test document</h1>") // pass
 doc.rendered.no("<h1>Not the title</h1>") // pass
 ```
 
 ### Copy
-Check for the presence or absence of strings in contents of the doc, excluding `code` elements:
+Check for the presence or absence of strings or patterns in contents of the doc, excluding `code` elements:
 ```js
 doc.copy.has("This is example Markdown") // pass
 doc.copy.no("markunit.js") // pass
 ```
 
 ### Code
-Check for the presence or absence of strings in contents of only the `code` elements:
+Check for the presence or absence of strings or patterns in contents of only the `code` elements:
 ```js
 doc.code.has("markunit.js") // pass
 doc.code.no("mark-unit.js") // pass
