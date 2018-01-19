@@ -5,24 +5,24 @@ var doc = markunit(fs.readFileSync("test/test.md", "utf8"))
 var readme = markunit(fs.readFileSync("README.md", "utf8"))
 
 describe("Documentation", function(){
-  it("should have a title", function(){
-    readme.markup.has("h1")
-  })
-  it("should have at least one h2", function(){
-    readme.markup.has("h2")
-  })
-  it("should not have the library's name in lower case in the copy", function(){
-    readme.copy.no("markunit")
-  })
-  it("should not have any curly quotes in code snippets", function(){
-    readme.code.no(["“","”"])
-  })
-  it("should have installation instructions", function(){
-    readme.code.has("npm install")
-  })
-  it("should capitalize Markdown in copy", function(){
-    readme.copy.no("markdown")
-  })
+    it("should have a title", function(){
+        readme.markup.has("h1")
+    })
+    it("should have at least one h2", function(){
+        readme.markup.has("h2")
+    })
+    it("should not have the library's name in lower case in the copy", function(){
+        readme.copy.no("markunit")
+    })
+    it("should not have any curly quotes in code snippets", function(){
+        readme.code.no(["“","”"])
+    })
+    it("should have installation instructions", function(){
+        readme.code.has("npm install")
+    })
+    it("should capitalize Markdown in copy", function(){
+        readme.copy.no("markdown")
+    })
 })
 
 describe("Source", function(){
