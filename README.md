@@ -76,7 +76,7 @@ doc.markup.no("li li") // pass
 For the `source`, `rendered`, `copy`, and `code` renditions, the pattern to match can be a string, a regular expression, or an array of either. For the `markup` rendition, the pattern can be a string or an array of strings, where each string represents a `jquery`-style [selector](https://cheerio.js.org). A single match from an array is sufficient for the `.has()` method to pass or the `.no()` method to fail.
 
 ```js
-doc.source.has(“test”) // pass
+doc.source.has("test") // pass
 doc.source.has(/t.?*t/) // pass
-doc.source.has([“test”, /Not present/]) //pass
+doc.source.has(["test", /Not present/]) //pass
 ```
