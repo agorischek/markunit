@@ -1,7 +1,29 @@
 var markunit = require("../lib/markunit.js")
-var fs = require('fs');
+var fs = require("fs");
 
 var doc = markunit(fs.readFileSync("test/test.md", "utf8"))
+var readme = markunit(fs.readFileSync("README.md", "utf8"))
+
+describe("Documentation", function(){
+  it("should have a title", function(){
+    readme.markup.has("h1")
+  })
+  it("should have at least one h2", function(){
+    readme.markup.has("h2")
+  })
+  it("should not have the library's name in lower case in the copy", function(){
+    readme.copy.no("markunit")
+  })
+  it("should not have any curly quotes in code snippets", function(){
+    readme.code.no(["“","”"])
+  })
+  it("should have installation instructions", function(){
+    readme.code.has("npm install")
+  })
+  it("should capitalize Markdown in copy", function(){
+    readme.copy.no("markdown")
+  })
+})
 
 describe("Source", function(){
     it("should find a string in the source Markdown", function(){
@@ -41,7 +63,7 @@ describe("Rendered", function(){
         doc.rendered.has(/<em>.*?<\/em>/)
     })
     it("should find a subpattern from an array", function(){
-        doc.source.has(["<p>", "<img>", "<b>"])
+        doc.rendered.has(["<p>", "<img>", "<b>"])
     })
     it("should not find an HTML element with incorrect content", function(){
         doc.rendered.no("<h1>Not the title</h1>")
@@ -53,7 +75,7 @@ describe("Rendered", function(){
         doc.rendered.no(/^<p>/)
     })
     it("should not find a subpattern from an array that doesn't exist", function(){
-        doc.source.no(["<i>", /abcd/])
+        doc.rendered.no(["<i>", /abcd/])
     })
 })
 
@@ -68,7 +90,7 @@ describe("Copy", function(){
         doc.copy.has(/testing .*? of/)
     })
     it("should find a subpattern from an array", function(){
-        doc.source.has(["Test", /abcd/, "document"])
+        doc.copy.has(["Test", /abcd/, "document"])
     })
     it("should not find a string that only exists in code elements", function(){
         doc.copy.no("markunit.js")
@@ -83,7 +105,7 @@ describe("Copy", function(){
         doc.copy.no(/of .*? only/)
     })
     it("should not find a subpattern from an array that doesn't exist", function(){
-        doc.source.no(["Not in there", /1234/])
+        doc.copy.no(["Not in there", /1234/])
     })
 })
 
@@ -98,7 +120,7 @@ describe("Code", function(){
         doc.code.has(/var.*?true/)
     })
     it("should find a subpattern from an array", function(){
-        doc.source.has(["mark", "javascript", "document"])
+        doc.code.has(["mark", "javascript", "document"])
     })
     it("should not find code that isn't present", function(){
         doc.code.no("$ npm install")
@@ -113,7 +135,7 @@ describe("Code", function(){
         doc.code.no(/testing ==/)
     })
     it("should not find a subpattern from an array that doesn't exist", function(){
-        doc.source.no(["JS", /html/])
+        doc.code.no(["JS", /html/])
     })
 })
 
