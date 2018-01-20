@@ -5,6 +5,7 @@ var doc = markunit(fs.readFileSync("test/test.md", "utf8"))
 var ignore = [/<x>.*?<\/x>\s?/, "super ", "spans\nacross"]
 doc.ignore(ignore)
 var readme = markunit(fs.readFileSync("README.md", "utf8"))
+readme.ignore(["“\"\,\"”"])
 
 describe("Documentation", function(){
     it("should have a title", function(){

@@ -89,3 +89,31 @@ A pattern can be excluded from review using `.ignore()`, which will completely r
 doc.ignore("content")
 doc.source.no("content") // pass
 ```
+
+## Example Usage
+
+```js
+var markunit = require("markunit")
+var fs = require('fs')
+
+var input = fs.readFileSync("./README.md", "utf8")
+var readme = markunit(input)
+
+describe("README", function(){
+  it("should have a title", function(){
+    doc.markup.has("h1")
+  })
+  it("should not contain double-indented lists", function(){
+    doc.markup.no("li li")
+  })
+  it("should not have the library's name in lower-case form in the copy", function(){
+    doc.copy.no("markunit")
+  })
+  it("should not have any curly quotes in code snippets", function(){
+    doc.code.no(["“","”"])
+  })
+  it("should contain installation instructions", function(){
+    doc.code.has("npm install")
+  })
+})
+```
