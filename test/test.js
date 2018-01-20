@@ -44,6 +44,11 @@ describe("Source", function(){
     it("should find a string created by the removal of ignored content", function(){
         doc.source.has("This will show up.")
     })
+    it("should find a previously ignored string when the ignore pattern is cleared", function(){
+        doc.ignore(null)
+        doc.source.has("super")
+        doc.ignore(ignore)
+    })
     it("should not find a string with different casing", function(){
         doc.source.no("# test document")
     })
