@@ -98,22 +98,32 @@ var fs = require('fs')
 
 var input = fs.readFileSync("./README.md", "utf8")
 var readme = markunit(input)
+readme.ignore("It’s spelled MyLibrary, not my-library.")
 
 describe("README", function(){
   it("should have a title", function(){
-    doc.markup.has("h1")
+    readme.markup.has("h1")
   })
   it("should not contain double-indented lists", function(){
-    doc.markup.no("li li")
+    readme.markup.no("li li")
   })
-  it("should not have the library's name in lower-case form in the copy", function(){
-    doc.copy.no("markunit")
+  it("should not have any raw HTML in the source", function(){
+    readme.source.no(/<.*?>.*?<\/.*?>/)
+  })
+  it("should have a link to npm", function(){
+    readme.rendered.has(/<a.*?href="https:\/\/npmjs\.com/)
+  })
+  it("should not spell the library name with a hyphen", function(){
+    readme.copy.no("my-library")
   })
   it("should not have any curly quotes in code snippets", function(){
-    doc.code.no(["“","”"])
+    readme.code.no(["“","”"])
+  })
+  it("should not reference old API calls", function(){
+    readme.code.no(["deprecatedCall1(", "deprecatedCall2(", "deprecatedCall3("])
   })
   it("should contain installation instructions", function(){
-    doc.code.has("npm install")
+    readme.code.has("npm install")
   })
 })
 ```
