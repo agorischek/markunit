@@ -35,6 +35,7 @@ There are five different renditions of the original Markdown content that can be
 Check for the presence or absence of patterns in the source Markdown:
 
 ```js
+// Will look for text matches in "# Test document\nThis is _example_ Markdown content for `markunit.js` documentation."
 doc.source.has("# Test document") // pass
 doc.source.no("Doesn't exist") // pass
 ```
@@ -43,6 +44,7 @@ doc.source.no("Doesn't exist") // pass
 Check for the presence or absence of patterns in the rendered HTML:
 
 ```js
+// Will look for text matches in "<h1>Test document</h1><p>This is <em>example</em> Markdown content for <code>markunit.js</code>" documentation.</p>
 doc.rendered.has("<h1>Test document</h1>") // pass
 doc.rendered.no("<h1>Not the title</h1>") // pass
 ```
@@ -51,6 +53,7 @@ doc.rendered.no("<h1>Not the title</h1>") // pass
 Check for the presence or absence of patterns in contents of the doc, excluding `code` elements:
 
 ```js
+// Will look for text matches in "Test document This is example Markdown content for" and "documentation."
 doc.copy.has("This is example Markdown") // pass
 doc.copy.no("markunit.js") // pass
 ```
@@ -59,6 +62,7 @@ doc.copy.no("markunit.js") // pass
 Check for the presence or absence of patterns in contents of only the `code` elements:
 
 ```js
+// Will look for text matches in "markunit.js"
 doc.code.has("markunit.js") // pass
 doc.code.no("mark-unit.js") // pass
 ```
@@ -67,6 +71,7 @@ doc.code.no("mark-unit.js") // pass
 Check for the presence or absence of `jquery`-style [selectors](https://cheerio.js.org):
 
 ```js
+// Will look for structural matches in "<h1></h1><p><em></em><code></code></p>"
 doc.markup.has("p") // pass
 doc.markup.no("li li") // pass
 ```
