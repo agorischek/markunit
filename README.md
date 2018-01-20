@@ -80,3 +80,12 @@ doc.source.has("test") // pass
 doc.source.has(/t.?*t/) // pass
 doc.source.has(["test", /Not present/]) // pass
 ```
+
+## Ignoring
+
+A pattern can be excluded from review using `.ignore()`, which will completely remove matches from the input Markdown. The pattern to ignore can be a string, a regular expression, or an array of either. Subsequent calls will overwrite the pattern, and passing `null` will clear the pattern.
+
+```js
+doc.ignore("content")
+doc.source.no("content") // pass
+```

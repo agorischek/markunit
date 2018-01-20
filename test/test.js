@@ -2,6 +2,8 @@ var markunit = require("../lib/markunit.js")
 var fs = require("fs");
 
 var doc = markunit(fs.readFileSync("test/test.md", "utf8"))
+var ignore = [/<x>.*?<\/x>\s?/, "super ", "spans\nacross"]
+doc.ignore(ignore)
 var readme = markunit(fs.readFileSync("README.md", "utf8"))
 
 describe("Documentation", function(){
@@ -38,6 +40,9 @@ describe("Source", function(){
     it("should find a subpattern from an array", function(){
         doc.source.has(["Test", /abcd/, "document"])
     })
+    it("should find a string created by the removal of ignored content", function(){
+        doc.source.has("This will show up.")
+    })
     it("should not find a string with different casing", function(){
         doc.source.no("# test document")
     })
@@ -49,6 +54,22 @@ describe("Source", function(){
     })
     it("should not find a subpattern from an array that doesn't exist", function(){
         doc.source.no(["Not in there", /abcd/])
+    })
+    it("should not find a string that was ignored using an array pattern", function(){
+        doc.source.no("super")
+    })
+    it("should not find a string that was ignored using a multiline string pattern", function(){
+        doc.source.no("spans")
+    })
+    it("should not find a string that was ignored using a string pattern", function(){
+        doc.ignore("321")
+        doc.source.no("321")
+        doc.ignore(ignore)
+    })
+    it("should not find a string that was ignored using an array pattern", function(){
+        doc.ignore(/6.4/)
+        doc.source.no("654")
+        doc.ignore(ignore)
     })
 })
 
