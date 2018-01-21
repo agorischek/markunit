@@ -1,4 +1,4 @@
-<img width="200" src="img/icon.png" alt="Markunit icon" />
+<img width="190" src="img/icon.png" alt="Markunit icon" />
 
 # Markunit
 
