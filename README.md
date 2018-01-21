@@ -103,7 +103,7 @@ The below demonstrates a simple setup and test suite for the typical repository 
 // test/test.js
 
 var markunit = require("markunit")
-var fs = require('fs')
+var fs = require("fs")
 
 var input = fs.readFileSync("../README.md", "utf8")
 var readme = markunit(input)
