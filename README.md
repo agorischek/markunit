@@ -97,6 +97,8 @@ doc.source.no("content") // pass
 
 ## Example Usage
 
+The below demonstrates a simple setup and test suite for the typical repository README, using a framework like [Mocha](https://mochajs.org).
+
 ```js
 var markunit = require("markunit")
 var fs = require('fs')
