@@ -100,10 +100,12 @@ doc.source.no("content") // pass
 The below demonstrates a simple setup and test suite for the typical repository README, using a framework like [Mocha](https://mochajs.org).
 
 ```js
+// test/test.js
+
 var markunit = require("markunit")
 var fs = require('fs')
 
-var input = fs.readFileSync("./README.md", "utf8")
+var input = fs.readFileSync("../README.md", "utf8")
 var readme = markunit(input)
 readme.ignore("It’s spelled MyLibrary, not my-library.")
 
