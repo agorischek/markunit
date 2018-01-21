@@ -17,7 +17,7 @@ Unit testing ***Markdown***? Yeah, it might sound odd. But Markdown is code, and
 Get the package from npm:
 
 ```bash
-$ npm install markunit
+$ npm install markunit -D
 ```
 
 Then require the package and load your Markdown document:
