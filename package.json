@@ -23,7 +23,7 @@
   "homepage": "https://github.com/agorischek/markunit#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "html2plaintext": "^2.0.1",
+    "html2plaintext": "^2.1.2",
     "showdown": "^1.8.6",
     "typeof": "^1.0.0",
     "underscore": "^1.8.3"
