@@ -1,0 +1,14 @@
+name: Update
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: git checkout dependency-updates
+      - run: git merge master
+      - run: git push origin dependency-updates
