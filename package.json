@@ -1,6 +1,6 @@
 {
   "name": "markunit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple assertion library for unit testing Markdown",
   "main": "lib/markunit.js",
   "scripts": {
@@ -26,9 +26,9 @@
     "html2plaintext": "^2.1.2",
     "showdown": "^1.9.1",
     "typeof": "^1.0.0",
-    "underscore": "^1.9.2"
+    "underscore": "^1.10.2"
   },
   "devDependencies": {
-    "mocha": "^7.0.0"
+    "mocha": "^7.2.0"
   }
 }
