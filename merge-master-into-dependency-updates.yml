@@ -1,0 +1,11 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    git checkout dependency-updates
+    git merge master
+  displayName: 'Merge master into dependency-updates'
