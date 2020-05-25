@@ -7,13 +7,10 @@ on:
 jobs:
   test:
     name: Test
-    
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
         node-version: [10.x, 12.x]
-  
     steps:
       - uses: actions/checkout@v2 
       - uses: actions/setup-node@v1
@@ -23,6 +20,7 @@ jobs:
       - run: npm test
 
   refresh:
+    name: Merge & push
     runs-on: ubuntu-latest
     needs: test
     steps:
