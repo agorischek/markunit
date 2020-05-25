@@ -5,8 +5,8 @@ on:
     branches: [ master ]
 
 jobs:
-  refresh:
-    name: Merge and push
+  test:
+    name: Test
     
     runs-on: ubuntu-latest
     
@@ -15,15 +15,22 @@ jobs:
         node-version: [10.x, 12.x]
   
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0    
+      - uses: actions/checkout@v2 
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm test
+
+  refresh:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0    
       - run: git pull origin dependency-updates
       - run: git checkout dependency-updates
       - run: git merge master
       - run: git push origin dependency-updates
+      
