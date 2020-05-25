@@ -1,4 +1,4 @@
-name: Refresh dependencies target
+name: Refresh Dependencies Target
 
 on:
   push:
