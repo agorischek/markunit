@@ -14,3 +14,6 @@ jobs:
       - run: git branch -a
       - run: git pull origin dependency-updates
       - run: git checkout dependency-updates
+      - run: git merge master
+      - run: git push origin dependency-updates
+
