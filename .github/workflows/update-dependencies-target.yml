@@ -1,4 +1,4 @@
-name: Update
+name: Update dependencies target
 
 on:
   push:
