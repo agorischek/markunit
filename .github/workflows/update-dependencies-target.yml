@@ -11,8 +11,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: |
-          git branch -a
-          git checkout dependency-updates
-          git merge master
-          git push origin dependency-updates
+      - run: git branch -a
+      - run: git pull origin dependency-updates
+      - run: git checkout dependency-updates
