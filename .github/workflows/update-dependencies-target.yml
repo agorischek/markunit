@@ -1,4 +1,4 @@
-name: Update dependencies target
+name: Refresh dependencies target
 
 on:
   push:
@@ -10,6 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git branch -a
-      - run: git checkout dependency-updates
-      - run: git merge master
+      - run: git branch dependency-updates
       - run: git push origin dependency-updates
