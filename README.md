@@ -4,7 +4,7 @@
 
 A simple assertion library for unit testing Markdown.
 
-[![Build Status](https://img.shields.io/travis/com/agorischek/markunit.svg)](https://travis-ci.com/agorischek/markunit)
+[![Build Status](https://dev.azure.com/agorischek/packages/_apis/build/status/Markunit/Markunit%20CI?branchName=master)](https://dev.azure.com/agorischek/packages/_build?definitionScope=%5CMarkunit)
 [![Version](https://img.shields.io/npm/v/markunit.svg)](https://www.npmjs.com/package/markunit)
 [![License](https://img.shields.io/github/license/agorischek/markunit.svg)](https://github.com/agorischek/markunit/blob/master/LICENSE)
 
