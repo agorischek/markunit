@@ -4,10 +4,14 @@
 
 A simple assertion library for unit testing Markdown.
 
-[![Build Status](https://dev.azure.com/agorischek/packages/_apis/build/status/Markunit/Markunit%20CI?branchName=master)](https://dev.azure.com/agorischek/packages/_build?definitionScope=%5CMarkunit)
+[![CI](https://github.com/agorischek/markunit/actions/workflows/ci.yml/badge.svg)](https://github.com/agorischek/markunit/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/npm/v/markunit.svg)](https://www.npmjs.com/package/markunit)
 [![Depfu](https://badges.depfu.com/badges/16d70514d853e58d7d304619cf99c853/overview.svg)](https://depfu.com/github/agorischek/markunit?project_id=6874)
 [![License](https://img.shields.io/github/license/agorischek/markunit.svg)](https://github.com/agorischek/markunit/blob/master/LICENSE)
+
+## Publishing
+
+Releases are published by the [Publish Package](https://github.com/agorischek/markunit/actions/workflows/publish.yml) GitHub Actions workflow using npm Trusted Publishing.
 
 ## Wait a second...
 
