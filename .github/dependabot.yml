@@ -4,28 +4,51 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: monthly
+      interval: weekly
+      day: monday
       time: "09:00"
       timezone: America/Los_Angeles
     cooldown:
-      default-days: 3
+      default-days: 7
+    versioning-strategy: increase-if-necessary
+    open-pull-requests-limit: 5
     groups:
-      routine-dependencies:
+      development-routine:
+        dependency-type: development
         patterns:
           - "*"
-    versioning-strategy: increase
-    open-pull-requests-limit: 2
+        update-types:
+          - minor
+          - patch
+      production-resolutions:
+        dependency-type: production
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: cheerio
+        update-types:
+          - version-update:semver-major
+      - dependency-name: markdown-it
+        update-types:
+          - version-update:semver-major
 
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
-      interval: monthly
+      interval: weekly
+      day: monday
       time: "09:00"
       timezone: America/Los_Angeles
     cooldown:
-      default-days: 3
+      default-days: 7
+    open-pull-requests-limit: 3
     groups:
       routine-actions:
         patterns:
           - "*"
-    open-pull-requests-limit: 1
+        update-types:
+          - minor
+          - patch
