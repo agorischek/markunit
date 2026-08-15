@@ -1,6 +1,6 @@
 {
   "name": "markunit",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A simple assertion library for unit testing Markdown",
   "main": "lib/markunit.js",
   "scripts": {
